@@ -31,7 +31,7 @@ class CatSanctuaryPage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 9),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
