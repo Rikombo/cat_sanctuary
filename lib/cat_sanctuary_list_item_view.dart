@@ -6,6 +6,7 @@ class CatSanctuaryListItemView extends StatelessWidget {
   final CatSanctuary cat;
 
   const CatSanctuaryListItemView({
+    super.key,
     required this.cat,
   });
 
@@ -22,7 +23,7 @@ class CatSanctuaryListItemView extends StatelessWidget {
               height: 120,
               fit: BoxFit.cover,
             ),
-            SizedBox(
+            const SizedBox(
               width: 16,
             ),
             Expanded(
@@ -33,9 +34,10 @@ class CatSanctuaryListItemView extends StatelessWidget {
                 children: [
                   Text(
                     cat.name,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 22),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Text(

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'cat_sanctuary.dart';
 
 class CatSanctuaryPage extends StatelessWidget {
@@ -15,7 +13,7 @@ class CatSanctuaryPage extends StatelessWidget {
         backgroundColor: Colors.brown,
         title: Text(
           cat.name,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
       ),
       body: Column(
@@ -42,9 +40,7 @@ class CatSanctuaryPage extends StatelessWidget {
               ),
             ),
           ),
-          Spacer(
-            flex: (1),
-          ),
+          const Spacer(),
         ],
       ),
     );

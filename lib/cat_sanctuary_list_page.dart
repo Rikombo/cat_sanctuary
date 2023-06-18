@@ -1,12 +1,12 @@
 import 'package:cat_sanctuary/cat_sanctuary.dart';
 import 'package:cat_sanctuary/cat_sanctuary_list_item_view.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'cat_sanctuary_page.dart';
-import 'cats.dart';
+import 'package:cat_sanctuary/cat_sanctuary_page.dart';
+import 'package:cat_sanctuary/cats.dart';
 
 class CatSanctuaryListPage extends StatelessWidget {
+  const CatSanctuaryListPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,11 +30,15 @@ class CatSanctuaryListPage extends StatelessWidget {
           final today = DateTime.now().day;
           final index = today % cats.length;
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => CatSanctuaryPage(cat: cats[index]),
+            builder: (context) => CatSanctuaryPage(
+              cat: cats[index],
+            ),
           ));
         },
-        child: Icon(Icons.favorite),
         backgroundColor: Colors.brown,
+        child: const Icon(
+          Icons.favorite,
+        ),
       ),
     );
   }
