@@ -35,7 +35,7 @@ class CatSanctuaryListItemView extends StatelessWidget {
                   Text(
                     cat.name,
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 22),
+
                   ),
                   const SizedBox(
                     height: 15,

@@ -14,36 +14,19 @@ class CatSanctuaryListPage extends StatelessWidget {
         backgroundColor: Colors.brown,
         title: const Text('Cats'),
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () => _showMovieDetails(context, cats[index]),
-            child: CatSanctuaryListItemView(
-              cat: cats[index],
-            ),
-          );
-        },
-        itemCount: cats.length,
+
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           final today = DateTime.now().day;
           final index = today % cats.length;
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => CatSanctuaryPage(
-              cat: cats[index],
-            ),
-          ));
-        },
-        backgroundColor: Colors.brown,
-        child: const Icon(
-          Icons.favorite,
-        ),
+
       ),
     );
   }
 
-  void _showMovieDetails(BuildContext context, CatSanctuary cat) {
+  void _showCatDetails(BuildContext context, CatSanctuary cat) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => CatSanctuaryPage(cat: cat),
