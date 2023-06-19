@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'cat_sanctuary.dart';
+
+import 'package:cat_sanctuary/cat_sanctuary.dart';
 
 class CatSanctuaryPage extends StatelessWidget {
   final CatSanctuary cat;
@@ -13,14 +14,15 @@ class CatSanctuaryPage extends StatelessWidget {
         backgroundColor: Colors.brown,
         title: Text(
           cat.name,
-          style: const TextStyle(color: Colors.white),
         ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 15),
+          const SizedBox(
+            height: 15,
+          ),
           Expanded(
             child: Center(
               child: Image.network(
