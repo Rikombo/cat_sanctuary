@@ -2,7 +2,6 @@ import 'package:cat_sanctuary/cat_details_page.dart';
 import 'package:cat_sanctuary/cat_sanctuary.dart';
 import 'package:cat_sanctuary/cat_sanctuary_list_item_view.dart';
 import 'package:flutter/material.dart';
-import 'package:cat_sanctuary/cat_sanctuary_page.dart';
 import 'package:cat_sanctuary/cats.dart';
 
 class CatSanctuaryListPage extends StatelessWidget {
@@ -25,21 +24,6 @@ class CatSanctuaryListPage extends StatelessWidget {
           );
         },
         itemCount: cats.length,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => CatSanctuaryPage(
-                cats: cats,
-              ),
-            ),
-          );
-        },
-        backgroundColor: Colors.brown,
-        child: const Icon(
-          Icons.favorite,
-        ),
       ),
     );
   }
