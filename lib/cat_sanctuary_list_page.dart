@@ -1,3 +1,4 @@
+import 'package:cat_sanctuary/cat_details_page.dart';
 import 'package:cat_sanctuary/cat_sanctuary.dart';
 import 'package:cat_sanctuary/cat_sanctuary_list_item_view.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class CatSanctuaryListPage extends StatelessWidget {
       body: ListView.builder(
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap: () => _showMovieDetails(context, cats[index]),
+            onTap: () => _showCatDetails(context, cats[index]),
             child: CatSanctuaryListItemView(
               cat: cats[index],
             ),
@@ -27,13 +28,13 @@ class CatSanctuaryListPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          final today = DateTime.now().day;
-          final index = today % cats.length;
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => CatSanctuaryPage(
-              cat: cats[index],
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => CatSanctuaryPage(
+                cats: cats,
+              ),
             ),
-          ));
+          );
         },
         backgroundColor: Colors.brown,
         child: const Icon(
@@ -43,10 +44,10 @@ class CatSanctuaryListPage extends StatelessWidget {
     );
   }
 
-  void _showMovieDetails(BuildContext context, CatSanctuary cat) {
+  void _showCatDetails(BuildContext context, CatSanctuary cat) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => CatSanctuaryPage(cat: cat),
+        builder: (context) => CatDetailsPage(cat: cat),
       ),
     );
   }
