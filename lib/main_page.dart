@@ -1,8 +1,9 @@
 import 'package:cat_sanctuary/cat_details_page.dart';
 import 'package:cat_sanctuary/cat_sanctuary_list_page.dart';
+import 'package:cat_sanctuary/cats_repository.dart';
 import 'package:flutter/material.dart';
-
-import 'cats.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:cat_sanctuary/cat_sanctuary.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -13,17 +14,34 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   var _selectedTabIndex = 0;
+  late final CatsRepository catsRepository;
+  Future<List<CatSanctuary>>? catsFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    catsRepository = RepositoryProvider.of<CatsRepository>(context);
+    catsFuture = catsRepository.getCatOfTheDay();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final today = DateTime.now().day;
-    final index = today % cats.length;
     return Scaffold(
       body: IndexedStack(
         index: _selectedTabIndex,
         children: [
           const CatSanctuaryListPage(),
-          CatDetailsPage(cat: cats[index]),
+          FutureBuilder<List<CatSanctuary>>(
+              future: catsFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data != null) {
+                  return CatDetailsPage(cat: snapshot.data![0]);
+                } else {
+                  return Text('An error occurred: ${snapshot.error}');
+                }
+              }),
           Container(
             color: Colors.pinkAccent.shade100,
           ),
