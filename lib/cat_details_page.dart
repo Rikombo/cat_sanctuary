@@ -14,6 +14,7 @@ class _CatDetailsPageState extends State<CatDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+    var screeSize = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.brown,
@@ -68,7 +69,7 @@ class _CatDetailsPageState extends State<CatDetailsPage> {
                       style: TextStyle(fontSize: 20, color: Colors.brown),
                     )
                   : SizedBox(
-                      width: 256,
+                      width: screeSize,
                       height: 64,
                       child: OutlinedButton(
                         style: OutlinedButton.styleFrom(

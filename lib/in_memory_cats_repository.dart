@@ -7,10 +7,10 @@ class InMemoryCatsRepository extends CatsRepository {
   final List<CatSanctuary> catsData = cats;
 
   @override
-  Future<List<CatSanctuary>> getCatOfTheDay() async {
+  Future<CatSanctuary> getCatOfTheDay() async {
     final today = DateTime.now().day;
     final index = today % cats.length;
-    return[cats[index]];
+    return cats[index];
   }
 
   @override

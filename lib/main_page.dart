@@ -14,14 +14,14 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   var _selectedTabIndex = 0;
-  late final CatsRepository catsRepository;
-  Future<List<CatSanctuary>>? catsFuture;
+  late final CatsRepository _catsRepository;
+  Future<CatSanctuary>? _catsFuture;
 
   @override
   void initState() {
     super.initState();
-    catsRepository = RepositoryProvider.of<CatsRepository>(context);
-    catsFuture = catsRepository.getCatOfTheDay();
+    _catsRepository = RepositoryProvider.of<CatsRepository>(context);
+    _catsFuture = _catsRepository.getCatOfTheDay();
   }
 
   @override
@@ -31,17 +31,20 @@ class _MainPageState extends State<MainPage> {
         index: _selectedTabIndex,
         children: [
           const CatSanctuaryListPage(),
-          FutureBuilder<List<CatSanctuary>>(
-              future: catsFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData && snapshot.data != null) {
-                  return CatDetailsPage(cat: snapshot.data![0]);
-                } else {
-                  return Text('An error occurred: ${snapshot.error}');
+          FutureBuilder<CatSanctuary>(
+            future: _catsFuture,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasData) {
+                final data = snapshot.data;
+                if (data != null) {
+                  return CatDetailsPage(cat: data);
                 }
-              }),
+              }
+              return Text('An error occurred: ${snapshot.error}');
+            },
+          ),
           Container(
             color: Colors.pinkAccent.shade100,
           ),

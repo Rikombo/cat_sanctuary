@@ -15,8 +15,8 @@ class CatSanctuaryListPage extends StatefulWidget {
 }
 
 class _CatSanctuaryListPageState extends State<CatSanctuaryListPage> {
-  late final CatsRepository catsRepository;
-  Future<List<CatSanctuary>>? catsFuture;
+  late final CatsRepository _catsRepository;
+  Future<List<CatSanctuary>>? _catsFuture;
   final TextEditingController _searchController = TextEditingController();
   Timer? _debouncer;
 
@@ -27,7 +27,7 @@ class _CatSanctuaryListPageState extends State<CatSanctuaryListPage> {
     _debouncer = Timer(const Duration(seconds: 2), () {
       final query = _searchController.text;
       setState(() {
-        catsFuture = catsRepository.searchCats(query);
+        _catsFuture = _catsRepository.searchCats(query);
       });
     });
   }
@@ -35,8 +35,8 @@ class _CatSanctuaryListPageState extends State<CatSanctuaryListPage> {
   @override
   void initState() {
     super.initState();
-    catsRepository = RepositoryProvider.of<CatsRepository>(context);
-    catsFuture = catsRepository.getCats();
+    _catsRepository = context.read<CatsRepository>();
+    _catsFuture = _catsRepository.getCats();
     _searchController.addListener(_debounceSearch);
   }
 
@@ -64,7 +64,7 @@ class _CatSanctuaryListPageState extends State<CatSanctuaryListPage> {
           ),
           Expanded(
             child: FutureBuilder<List<CatSanctuary>>(
-              future: catsFuture,
+              future: _catsFuture,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(
