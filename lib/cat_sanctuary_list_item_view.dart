@@ -1,5 +1,6 @@
 import 'package:cat_sanctuary/cat_sanctuary.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class CatSanctuaryListItemView extends StatelessWidget {
   final CatSanctuary cat;
@@ -34,9 +35,7 @@ class CatSanctuaryListItemView extends StatelessWidget {
                   Text(
                     cat.name,
                     style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
-                    ),
+                        fontWeight: FontWeight.bold, fontSize: 22),
                   ),
                   const SizedBox(
                     height: 15,

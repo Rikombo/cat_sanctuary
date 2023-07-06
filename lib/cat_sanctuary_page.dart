@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:cat_sanctuary/cat_sanctuary.dart';
 
 class CatSanctuaryPage extends StatelessWidget {
@@ -13,9 +14,6 @@ class CatSanctuaryPage extends StatelessWidget {
         backgroundColor: Colors.brown,
         title: Text(
           cat.name,
-          style: const TextStyle(
-            color: Colors.white,
-          ),
         ),
       ),
       body: Column(
