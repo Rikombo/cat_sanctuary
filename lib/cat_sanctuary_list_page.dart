@@ -17,7 +17,7 @@ class CatSanctuaryListPage extends StatelessWidget {
       body: ListView.builder(
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap: () => _showMovieDetails(context, cats[index]),
+            onTap: () => _showCatDetails(context, cats[index]),
             child: CatSanctuaryListItemView(
               cat: cats[index],
             ),
@@ -43,7 +43,7 @@ class CatSanctuaryListPage extends StatelessWidget {
     );
   }
 
-  void _showMovieDetails(BuildContext context, CatSanctuary cat) {
+  void _showCatDetails(BuildContext context, CatSanctuary cat) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => CatSanctuaryPage(cat: cat),
