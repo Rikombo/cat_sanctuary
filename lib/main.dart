@@ -1,10 +1,10 @@
-import 'package:cat_sanctuary/cat_sanctuary_list_page.dart';
+import 'package:cat_sanctuary/main_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
     const MaterialApp(
-      home: CatSanctuaryListPage(),
+      home: MainPage(),
     ),
   );
 }

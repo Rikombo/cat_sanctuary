@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:cat_sanctuary/cat_sanctuary.dart';
 
 class CatSanctuaryPage extends StatelessWidget {
-  final CatSanctuary cat;
+  final List<CatSanctuary> cats;
 
-  const CatSanctuaryPage({super.key, required this.cat});
+  const CatSanctuaryPage({super.key, required this.cats});
 
   @override
   Widget build(BuildContext context) {
+    final today = DateTime.now().day;
+    final index = today % cats.length;
+    final cat = cats[index];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.brown,
@@ -31,9 +35,9 @@ class CatSanctuaryPage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 9),
+          const SizedBox(height: 16),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
               cat.description,
               style: const TextStyle(
